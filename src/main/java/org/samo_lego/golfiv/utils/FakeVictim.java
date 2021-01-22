@@ -4,7 +4,6 @@ import com.mojang.authlib.GameProfile;
 import net.minecraft.entity.Entity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.network.ServerPlayerInteractionManager;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec2f;
 import net.minecraft.util.math.Vec3d;
@@ -18,8 +17,8 @@ public class FakeVictim extends ServerPlayerEntity {
 
     private static final String allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
 
-    public FakeVictim(MinecraftServer server, ServerWorld world, GameProfile profile, ServerPlayerInteractionManager interactionManager) {
-        super(server, world, profile, interactionManager);
+    public FakeVictim(MinecraftServer server, ServerWorld world, GameProfile profile) {
+        super(server, world, profile);
     }
 
     public static FakeVictim summonFake(ServerPlayerEntity player) {
@@ -34,7 +33,6 @@ public class FakeVictim extends ServerPlayerEntity {
         // Creating fake ServerPlayerEntity
         GameProfile fakeProfile = new GameProfile(UUID.randomUUID(), fakeName);
         ServerWorld world = player.getServerWorld();
-        ServerPlayerInteractionManager interactionManager = new ServerPlayerInteractionManager(world);
 
         // Player's coordinates
         Vec3d movement = new Vec3d(
@@ -47,7 +45,7 @@ public class FakeVictim extends ServerPlayerEntity {
                 player.pitch
         );
 
-        FakeVictim fakeVictim = new FakeVictim(player.getServer(), world, fakeProfile, interactionManager);
+        FakeVictim fakeVictim = new FakeVictim(player.getServer(), world, fakeProfile);
         fakeVictim.rotateAroundPlayer(movement, rotations);
 
         return fakeVictim;

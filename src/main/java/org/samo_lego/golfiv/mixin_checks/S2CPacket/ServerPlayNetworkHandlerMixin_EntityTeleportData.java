@@ -1,20 +1,14 @@
 package org.samo_lego.golfiv.mixin_checks.S2CPacket;
 
-import net.fabricmc.fabric.impl.networking.ThreadedAnvilChunkStorageTrackingExtensions;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.Saddleable;
 import net.minecraft.network.Packet;
 import net.minecraft.network.packet.s2c.play.EntitiesDestroyS2CPacket;
 import net.minecraft.network.packet.s2c.play.EntityPositionS2CPacket;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerChunkManager;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.server.world.ThreadedAnvilChunkStorage;
 import org.samo_lego.golfiv.mixin_checks.accessors.EntityPositionS2CPacketAccessor;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -53,8 +47,7 @@ public abstract class ServerPlayNetworkHandlerMixin_EntityTeleportData {
             Entity teleporter = world.getEntityById(entityId);
 
             if(teleporter instanceof ServerPlayerEntity) {
-                ThreadedAnvilChunkStorage storage = world.getChunkManager().threadedAnvilChunkStorage;
-                Collection<ServerPlayerEntity> trackers = ((ThreadedAnvilChunkStorageTrackingExtensions) storage).fabric_getTrackingPlayers(this.player);
+                Collection<ServerPlayerEntity> trackers = PlayerLookup.tracking(this.player);
 
                 if(!trackers.contains(teleporter)) {
                     // Can not track this player (teleporter), why send data?

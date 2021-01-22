@@ -53,7 +53,7 @@ public class ServerPlayNetworkHandlerMixin_AntiKnockbackCheck {
             )
     )
     private void onSend(Packet<?> packet, GenericFutureListener<? extends Future<? super Void>> listener, CallbackInfo ci) {
-        if(golfConfig.combat.checkAntiKnockback && !this.checkKnockback && packet instanceof EntityVelocityUpdateS2CPacket && this.player.getEntityId() == ((EntityVelocityUpdateS2CPacketAccessor) packet).getEntityId())
+        if(golfConfig.combat.checkAntiKnockback && !this.checkKnockback && packet instanceof EntityVelocityUpdateS2CPacket && this.player.getId() == ((EntityVelocityUpdateS2CPacketAccessor) packet).getEntityId())
             this.checkKnockback = true;
     }
 }

@@ -37,7 +37,7 @@ public class ServerPlayNetworkHandlerMixin_FlightCheck {
     private void checkFlight(PlayerMoveC2SPacket packet, CallbackInfo ci) {
         if(
                 golfConfig.movement.checkFlight &&
-                !this.player.abilities.allowFlying &&
+                !this.player.getAbilities().allowFlying &&
                 !((Golfer) player).isNearFluid() &&
                 !data.wasLLastOnGround() &&
                 !data.wasLastOnGround() &&

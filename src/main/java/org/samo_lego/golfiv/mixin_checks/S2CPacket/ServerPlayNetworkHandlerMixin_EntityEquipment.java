@@ -38,7 +38,7 @@ public class ServerPlayNetworkHandlerMixin_EntityEquipment {
         if(golfConfig.packet.removeEquipmentTags && packet instanceof EntityEquipmentUpdateS2CPacket) {
             EntityEquipmentUpdateS2CPacketAccessor packetAccessor = (EntityEquipmentUpdateS2CPacketAccessor) packet;
 
-            if(packetAccessor.getEntityId() == player.getEntityId())
+            if(packetAccessor.getEntityId() == player.getId())
                 return;
 
             List<Pair<EquipmentSlot, ItemStack>> newEquipment = Lists.newArrayList();
