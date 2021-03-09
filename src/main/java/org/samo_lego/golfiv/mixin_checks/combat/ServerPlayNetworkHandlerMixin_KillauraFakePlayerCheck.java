@@ -22,8 +22,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-import static net.minecraft.network.packet.s2c.play.PlayerListS2CPacket.Action.ADD_PLAYER;
-import static net.minecraft.network.packet.s2c.play.PlayerListS2CPacket.Action.REMOVE_PLAYER;
+import static net.minecraft.network.packet.s2c.play.PlayerListS2CPacket.class_5893.ADD_PLAYER;
+import static net.minecraft.network.packet.s2c.play.PlayerListS2CPacket.class_5893.REMOVE_PLAYER;
 import static org.samo_lego.golfiv.GolfIV.golfConfig;
 import static org.samo_lego.golfiv.utils.CheatType.KILLAURA;
 

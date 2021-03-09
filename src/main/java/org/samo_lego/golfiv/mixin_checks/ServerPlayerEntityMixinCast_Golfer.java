@@ -349,7 +349,7 @@ public abstract class ServerPlayerEntityMixinCast_Golfer implements Golfer {
      * @param tag
      * @param ci
      */
-    @Inject(method = "writeCustomDataToTag(Lnet/minecraft/nbt/CompoundTag;)V", at = @At("TAIL"))
+    @Inject(method = "writeCustomDataToNbt(Lnet/minecraft/nbt/CompoundTag;)V", at = @At("TAIL"))
     private void writeCustomDataToTag(CompoundTag tag, CallbackInfo ci) {
         CompoundTag dataTag = new CompoundTag();
 
@@ -368,7 +368,7 @@ public abstract class ServerPlayerEntityMixinCast_Golfer implements Golfer {
      * @param tag
      * @param ci
      */
-    @Inject(method = "readCustomDataFromTag(Lnet/minecraft/nbt/CompoundTag;)V", at = @At("TAIL"))
+    @Inject(method = "readCustomDataFromNbt(Lnet/minecraft/nbt/CompoundTag;)V", at = @At("TAIL"))
     private void readCustomDataFromTag(CompoundTag tag, CallbackInfo ci) {
         CompoundTag dataTag = tag.getCompound("golfIV:player_data");
         if(dataTag != null) {

@@ -77,7 +77,7 @@ public abstract class ServerPlayNetworkHandlerMixin_TimerCheck {
      * @param set
      * @param ci
      */
-    @Inject(method = "teleportRequest(DDDFFLjava/util/Set;)V", at = @At("HEAD"))
+    @Inject(method = "requestTeleport(DDDFFLjava/util/Set;)V", at = @At("HEAD"))
     private void timerRebalance(double x, double y, double z, float yaw, float pitch, Set<PlayerPositionLookS2CPacket.Flag> set, CallbackInfo ci) {
         this.packetRate -= 50;
     }

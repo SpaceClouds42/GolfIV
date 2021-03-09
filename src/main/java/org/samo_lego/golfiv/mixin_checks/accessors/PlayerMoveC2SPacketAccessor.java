@@ -15,7 +15,7 @@ public interface PlayerMoveC2SPacketAccessor {
      * Allows to change packet onGround value.
      * @param onGround whether player is really on ground.
      */
-    @Accessor("onGround")
+    @Accessor("field_29179")
     void setOnGround(boolean onGround);
 
     @Accessor("changePosition")

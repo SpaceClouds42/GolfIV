@@ -36,7 +36,7 @@ public abstract class ItemStackMixinCast_itemStackChecker implements ItemStackCh
     @Override
     public boolean makeLegal() {
         boolean illegal = false;
-        Map<Enchantment, Integer> enchantments = EnchantmentHelper.fromTag(this.getEnchantments());
+        Map<Enchantment, Integer> enchantments = EnchantmentHelper.fromNbt(this.getEnchantments());
 
         for(Map.Entry<Enchantment, Integer> ench : enchantments.entrySet()) {
             Enchantment enchantment = ench.getKey();
