@@ -55,8 +55,7 @@ public abstract class ServerPlayNetworkHandlerMixin_KillauraFakePlayerCheck {
                     value = "INVOKE",
                     target = "Lnet/minecraft/server/network/ServerPlayerEntity;setSneaking(Z)V"
             ),
-            locals = LocalCapture.CAPTURE_FAILHARD,
-            cancellable = true
+            locals = LocalCapture.CAPTURE_FAILHARD
     )
     private void checkHitEntity(PlayerInteractEntityC2SPacket packet, CallbackInfo ci, ServerWorld serverWorld, Entity target) {
         if(golfConfig.combat.checkKillaura && fakeVictim != null) {
@@ -82,10 +81,9 @@ public abstract class ServerPlayNetworkHandlerMixin_KillauraFakePlayerCheck {
     @Inject(
             method = "onPlayerInteractEntity(Lnet/minecraft/network/packet/c2s/play/PlayerInteractEntityC2SPacket;)V",
             at = @At("TAIL"),
-            locals = LocalCapture.CAPTURE_FAILHARD,
-            cancellable = true
+            locals = LocalCapture.CAPTURE_FAILHARD
     )
-    private void testWithFakeVictim(PlayerInteractEntityC2SPacket packet, CallbackInfo ci, Entity target) {
+    private void testWithFakeVictim(PlayerInteractEntityC2SPacket packet, CallbackInfo ci, ServerWorld serverWorld, Entity target) {
         if(golfConfig.combat.checkKillaura && fakeVictim == null && target instanceof LivingEntity && !target.isAlive() && ((Golfer) player).getHitAccuracy() > golfConfig.combat.minSuspiciousAccuracy) {
             this.fakeVictim = FakeVictim.summonFake(player);
             player.networkHandler.sendPacket(new PlayerListS2CPacket(ADD_PLAYER, fakeVictim));
