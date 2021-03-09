@@ -46,7 +46,7 @@ public class ServerPlayNetworkHandlerMixin_HitCheck {
             method = "onPlayerInteractEntity(Lnet/minecraft/network/packet/c2s/play/PlayerInteractEntityC2SPacket;)V",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/network/packet/c2s/play/PlayerInteractEntityC2SPacket;getHand()Lnet/minecraft/util/Hand;"
+                    target = "Lnet/minecraft/network/packet/c2s/play/PlayerInteractEntityC2SPacket;method_34209(Lnet/minecraft/network/packet/c2s/play/PlayerInteractEntityC2SPacket$class_5908;)V"
             ),
             locals = LocalCapture.CAPTURE_FAILHARD,
             cancellable = true
